@@ -6,14 +6,14 @@
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Log.io real-time log monitoring server
+# Short-Description: Log.io server
 ### END INIT INFO
 
 USERNAME={{ elao_logio_user }}
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script.
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-DESC="Log.io real-time log monitoring server"
+DESC="Log.io server"
 NAME=log.io-server
 DAEMON=/usr/bin/log.io-server
 PIDFILE=/var/run/$NAME.pid

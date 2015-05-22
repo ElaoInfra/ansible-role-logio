@@ -6,23 +6,14 @@
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Log.io real-time log monitoring harvester
+# Short-Description: Log.io harvester
 ### END INIT INFO
 
-# Based off Transmission init.d script
-# https://trac.transmissionbt.com/wiki/Scripts/initd
-
-# ----- CONFIGURATION -----
-# The name of the user that should run Log.io Harvester.
-# It's RECOMENDED to run log.io-harvester in it's own user,
-# by default, this is set to '{{ elao_logio_user }}'.
-# For the sake of security you shouldn't set a password
-# on this user
 USERNAME={{ elao_logio_user }}
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script.
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-DESC="Log.io real-time log monitoring harvester"
+DESC="Log.io harvester"
 NAME=log.io-harvester
 DAEMON=/usr/bin/log.io-harvester
 PIDFILE=/var/run/$NAME.pid
