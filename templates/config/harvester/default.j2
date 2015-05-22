@@ -1,0 +1,33 @@
+{%- import '_macros.j2' as macros with context -%}
+
+{% set config = elao_logio_config_harvester -%}
+
+{% set config_log_streams = [] -%}
+
+{%- for configs in config -%}
+    {%- for config_name, config_parameters in configs.iteritems() -%}
+        {%- if config_name == 'logStreams' -%}
+            {%- if config_log_streams.extend(config_parameters) -%}{%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endfor -%}
+
+exports.config = {
+  nodeName: "server",
+  logStreams: {
+{% for configs in config_log_streams -%}
+{% set outer_loop = loop %}
+{%- for config_name, config_parameters in configs.iteritems() %}
+    {{ config_name }}: [
+{% for config_parameter in config_parameters %}
+      "{{ config_parameter }}"{{ '' if loop.last else ',' }}
+{% endfor %}
+    ]{{ '' if outer_loop.last else ',' }}
+{% endfor -%}
+{%- endfor %}
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 28777
+  }
+}

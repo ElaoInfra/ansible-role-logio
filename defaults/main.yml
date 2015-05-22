@@ -1,0 +1,17 @@
+---
+
+# User
+elao_logio_user: root
+
+# Config
+elao_logio_config_log_server_file: /{{ elao_logio_user }}/.log.io/log_server.conf
+elao_logio_config_log_server_template: config/log_server/default.j2
+elao_logio_config_log_server: []
+
+elao_logio_config_web_server_file: /{{ elao_logio_user }}/.log.io/web_server.conf
+elao_logio_config_web_server_template: config/web_server/default.j2
+elao_logio_config_web_server: []
+
+elao_logio_config_harvester_file: /{{ elao_logio_user }}/.log.io/harvester.conf
+elao_logio_config_harvester_template: config/harvester/default.j2
+elao_logio_config_harvester: []

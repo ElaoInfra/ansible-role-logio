@@ -1,0 +1,20 @@
+- name: config > Log server template
+  template:
+    src:  "{{ elao_logio_config_log_server_template }}"
+    dest: "{{ elao_logio_config_log_server_file }}"
+  notify:
+    - log.io-server restart
+
+- name: config > Web server template
+  template:
+    src:  "{{ elao_logio_config_web_server_template }}"
+    dest: "{{ elao_logio_config_web_server_file }}"
+  notify:
+    - log.io-server restart
+
+- name: config > Harvester template
+  template:
+    src:  "{{ elao_logio_config_harvester_template }}"
+    dest: "{{ elao_logio_config_harvester_file }}"
+  notify:
+    - log.io-harvester restart

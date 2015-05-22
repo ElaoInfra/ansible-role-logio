@@ -1,0 +1,6 @@
+---
+
+- name: install > Packages
+  command: 'npm install -g log.io --user "{{ elao_logio_user }}"'
+  args:
+    creates: /usr/bin/log.io-server

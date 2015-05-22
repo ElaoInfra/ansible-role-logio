@@ -1,0 +1,24 @@
+---
+
+- name: services > Server init
+  template:
+    src:   services/log.io-server.j2
+    dest:  /etc/init.d/log.io-server
+    owner: root
+    mode:  0755
+
+- name: services > Harvester init
+  template:
+    src:   services/log.io-harvester.j2
+    dest:  /etc/init.d/log.io-harvester
+    owner: root
+    mode:  0755
+
+- name: services > Services
+  service:
+    name:    "{{ item }}"
+    state:   started
+    enabled: yes
+  with_items:
+    - log.io-server
+    - log.io-harvester
