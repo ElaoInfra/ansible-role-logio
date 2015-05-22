@@ -7,5 +7,5 @@
 
 - name: log.io-harvester restart
   service:
-    name:  logio-harvester
+    name:  log.io-harvester
     state: restarted
