@@ -42,7 +42,7 @@
     {%- if value is sequence and value is not string -%}
         {{ key }}{{ '\n' }}{{ config(value, [], indent + 4) }}
     {%- else -%}
-        {{ _config_parameter_key(key)|indent(indent, true) }} {{ _config_parameter_value(value) }}
+        {{ _config_parameter_key(key)|indent(indent, true) }}: {{ _config_parameter_value(value) }}
     {%- endif -%}
 {%- endmacro -%}
 
@@ -54,11 +54,11 @@
     {%- if value is sameas none -%}
         ~
     {%- elif value is sameas true -%}
-        yes
+        true
     {%- elif value is sameas false -%}
-        no
+        false
     {%- elif value is string -%}
-        {{ value }}
+        "{{ value }}"
     {%- elif value is number -%}
         {{ value }}
     {%- endif -%}

@@ -13,7 +13,7 @@
 {%- endfor -%}
 
 exports.config = {
-  nodeName: "server",
+{{ macros.config_row(config, 'nodeName', 'application_server', 2) }},
   logStreams: {
 {% for configs in config_log_streams -%}
 {% set outer_loop = loop %}
