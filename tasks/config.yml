@@ -1,20 +1,23 @@
 - name: config > Log server template
   template:
-    src:  "{{ elao_logio_config_log_server_template }}"
+    src:  "{{ elao_logio_config_log_server_template|ternary(elao_logio_config_log_server_template, 'config/log_server/base.j2') }}"
     dest: "{{ elao_logio_config_log_server_file }}"
+  when: (elao_logio_config_log_server_template is not none) or (elao_logio_config_log_server|length)
   notify:
     - log.io-server restart
 
 - name: config > Web server template
   template:
-    src:  "{{ elao_logio_config_web_server_template }}"
+    src:  "{{ elao_logio_config_web_server_template|ternary(elao_logio_config_web_server_template, 'config/web_server/base.j2') }}"
     dest: "{{ elao_logio_config_web_server_file }}"
+  when: (elao_logio_config_web_server_template is not none) or (elao_logio_config_web_server|length)
   notify:
     - log.io-server restart
 
 - name: config > Harvester template
   template:
-    src:  "{{ elao_logio_config_harvester_template }}"
+    src:  "{{ elao_logio_config_harvester_template|ternary(elao_logio_config_harvester_template, 'config/harvester/base.j2') }}"
     dest: "{{ elao_logio_config_harvester_file }}"
+  when: (elao_logio_config_harvester_template is not none) or (elao_logio_config_harvester|length)
   notify:
     - log.io-harvester restart
