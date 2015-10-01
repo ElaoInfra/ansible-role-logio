@@ -1,3 +1,5 @@
+---
+
 - name: config > Log server template
   template:
     src:  "{{ elao_logio_config_log_server_template|ternary(elao_logio_config_log_server_template, 'config/log_server/base.j2') }}"
